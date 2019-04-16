@@ -7,6 +7,7 @@ void output(String msg);
 void btn_a_ISR();
 void next(int steps);
 void previous(int steps);
+void checkSerial();
 
 void app_fc();
 void app_snake();
