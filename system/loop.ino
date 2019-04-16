@@ -14,6 +14,6 @@ void loop() {
     }
 
     app[currentApp]();
-
+    checkSerial();
     errorOut();
 }

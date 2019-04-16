@@ -1,15 +1,18 @@
 //simpLED-Firmware
 
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/setup/libraries.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/setup/functions.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/setup/variables.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/setup/appVar.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/setup/setup.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/system/loop.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/system/parser.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/system/misc.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/apps/fc.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/apps/snake.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/libraries.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/functions.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/variables.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/appVar.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/setup.ino"
+
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/loop.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/parser.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/serialCMD.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/misc.ino"
+
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/apps/fc.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/apps/snake.ino"
 
 /*
 #include "apps/fc.ino"
