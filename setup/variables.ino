@@ -14,22 +14,21 @@ unsigned long lastInterrupt = 0;
 const char seperator = '/';
 #define MAX_PARAMETER 8
 
-
-
 //System
 
 String serialString = "";     // a String to hold incoming data
 bool stringComplete = false;  // whether the string is complete
 
 byte errorIndex = 0;  //-1 means no error   syntax (is analyzed by errorOut() ): errortype errormessage
-const String errorStore[5] = {
+const String errorStore[] = {
     /*0*/ "0 No Error",
     /*1*/ "0 ",
     /*2*/ "4 Too many parameters in command",
-    /*3*/ "4 Not enough parameters, using prior",
-    /*4*/ "5 No valid AppID"};
+    /*3*/ "4 Not enough parameters, using prior/default",
+    /*4*/ "5 No valid AppID",
+    /*5*/ "5 No valid Command"};
 
-const String errorComment[6] = {
+const String errorComment[] = {
     /*0*/ "Minor System Error",
     /*1*/ "Major System Error",
     /*2*/ "idk",
@@ -45,11 +44,9 @@ const String errorComment[6] = {
 // 4 minor parsing error
 // 5 major parsing error
 
-
-
-
 //Settings
 bool wifiMode = false;
+byte brightness = 255;
 
 //Apps
 
