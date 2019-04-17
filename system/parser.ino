@@ -2,6 +2,11 @@ void parser(String cmd) {
     String parameters[MAX_PARAMETER] = "";
     Serial.println("Parser started for command: " + cmd);
 
+    if (cmd.equals("__RESET__")) {
+        Serial.println("Resetting simpLED...");
+        sysReset();
+    }
+
     int parameterIndex = 0;
 
     char cmdType = cmd.charAt(0);
@@ -37,7 +42,7 @@ void parser(String cmd) {
         case 'b':  //Previous          (brightness 0-255)
             FastLED.setBrightness(parameters[0].toInt());
             Serial.print("Brightness set to ");
-            Serial.print((parameters[0].toInt() / 255) * 100);
+            Serial.print(parameters[0].toInt()*100/255);
             Serial.println("%");
         default:
             break;
