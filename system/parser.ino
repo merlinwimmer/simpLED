@@ -2,16 +2,15 @@ void parser(String cmd) {
     String parameters[MAX_PARAMETER] = "";
     Serial.println("Parser started for command: " + cmd);
 
-    if (cmd.equals("__RESET__")) {
+    if (cmd.equals("__RESET__") || cmd.equals("RST")) {
         Serial.println("Resetting simpLED...");
         sysReset();
     }
 
     int parameterIndex = 0;
 
-    char cmdType = cmd.charAt(0);
 
-    uint8_t i = 1;
+    uint8_t i = 0;
     for (; i < cmd.length() && parameterIndex < MAX_PARAMETER; i++)  //divide the incoming command s into parameters
     {
         if (cmd.charAt(i) == seperator) {
@@ -20,6 +19,8 @@ void parser(String cmd) {
             parameters[parameterIndex] += cmd.charAt(i);
         }
     }
+
+    char cmdType = parameters[0].charAt(0);
 
     if (parameterIndex >= MAX_PARAMETER) {
         errorIndex = 2;
@@ -30,20 +31,28 @@ void parser(String cmd) {
         Serial.println("    " + parameters[i]);
     }
 
+    Serial.print("parameterIndex is: ");
+    Serial.print(parameterIndex);
+    Serial.print(", cmType is: ");
+    Serial.println(cmdType);
+
     switch (cmdType) {
-        case 'a':  //App-Command    (AppID/Parameter1/Parameter2/Parameter3/ ...)
-            currentApp = parameters[0].toInt();
+        case 'a':  //App-Command    (cmdType/AppID/Parameter1/Parameter2/Parameter3/ ...)
+            currentApp = parameters[1].toInt();
             app_setup[currentApp](parameters);
             break;
-        case 'n':  //Next          (optionally: steps forward)
-            next(parameterIndex == 1 ? parameters[0].toInt() : 1);
-        case 'p':  //Previous          (optionally: steps backwards)
-            previous(parameterIndex == 1 ? parameters[0].toInt() : 1);
-        case 'b':  //Previous          (brightness 0-255)
-            FastLED.setBrightness(parameters[0].toInt());
+        case 'n':  //Next          (cmdType/optionally: steps forward)
+            next(parameterIndex > 0 ? parameters[1].toInt() : 1);
+            break;
+        case 'p':  //Previous          (cmdType/optionally: steps backwards)
+            previous(parameterIndex > 0 ? parameters[1].toInt() : 1);
+            break;
+        case 'b':  //Previous          (cmdType/brightness 0-255)
+            FastLED.setBrightness(parameters[1].toInt());
             Serial.print("Brightness set to ");
-            Serial.print(parameters[0].toInt()*100/255);
+            Serial.print(parameters[1].toInt()*100/255);
             Serial.println("%");
+            break;
         default:
             break;
     }
