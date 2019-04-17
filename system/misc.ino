@@ -47,3 +47,8 @@ void previous(int steps) {
         lastInterrupt = millis();
     }
 }
+
+void sysReset() {
+    //asm volatile("  jmp 0");
+    ESP.reset();
+}
