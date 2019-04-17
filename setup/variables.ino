@@ -64,8 +64,8 @@ byte cmdIndex = 0;
 
 #define COMMAND_COUNT 2
 String cmdArr[COMMAND_COUNT] = {
-    "a0/200/50/10",
-    "a1/100/3/3/4/5"};
+    "a/0/200/50/10",
+    "a/1/100/3/3/4/5"};
 
 //Standart Colors
 byte colors[16][3] = {
