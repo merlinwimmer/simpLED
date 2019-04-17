@@ -8,8 +8,10 @@ void btn_a_ISR();
 void next(int steps);
 void previous(int steps);
 void checkSerial();
+void sysReset(); 
 
 void app_fc();
 void app_snake();
 void app_fc_setup(String parameters[]);
 void app_snake_setup(String parameters[]);
+
