@@ -8,11 +8,6 @@ void loop() {
         cmdChanged = false;
     }
 
-    if (stringComplete) {
-        parser(serialString);
-        stringComplete = false;
-    }
-
     app[currentApp]();
     checkSerial();
     errorOut();
