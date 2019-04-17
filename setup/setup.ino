@@ -3,6 +3,7 @@ void setup()
     Serial.begin(115200);
     Serial.println("Setup starting...");
     FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
+    FastLED.setBrightness(brightness);
     //FastLED.setDither(0); //Falls setBrigtness buggt
 
     pinMode(BTN_A_PIN, INPUT_PULLUP);
@@ -11,22 +12,22 @@ void setup()
 
     for (int i = 0; i < NUM_LEDS; i++)
     {
-        leds[i] = CRGB(127, 0, 0);
+        leds[i] = CRGB(2, 0, 0);
     }
     FastLED.show();
-    delay(500);
+    delay(100);
     for (int i = 0; i < NUM_LEDS; i++)
     {
-        leds[i] = CRGB(0, 127, 0);
+        leds[i] = CRGB(0, 2, 0);
     }
     FastLED.show();
-    delay(500);
+    delay(100);
     for (int i = 0; i < NUM_LEDS; i++)
     {
-        leds[i] = CRGB(0, 0, 127);
+        leds[i] = CRGB(0, 0, 2);
     }
     FastLED.show();
-    delay(500);
+    delay(100);
     for (int i = 0; i < NUM_LEDS; i++)
     {
         leds[i] = CRGB(0, 0, 0);
