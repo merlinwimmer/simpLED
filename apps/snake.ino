@@ -26,4 +26,7 @@ void app_snake_setup(String parameters[]) {  //parameters: AppID/delay/number of
     for (int i = 0; i < snake_color_count; i++) {
         snake_colors[i] = parameters[i + 3].toInt();
     }
+
+    snake_colorIndex = 0;
+    snake_ledIndex = 0;
 }
