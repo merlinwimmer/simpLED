@@ -9,20 +9,19 @@
 #include <WiFiUdp.h>
 ESP8266WiFiMulti wifi;
 
-
 //Artnet
 #include <ArtnetWifi.h>
 
 //FastLED
 #include <FastLED.h>
 
-/*
 //DS3231 RTC
-#include <DS3231.h>
-//DS3231  rtc(SDA, SCL);
-DS3231  rtc;
-DateTime t;
-*/
+#include <Wire.h>
+#include "DS3231.h"
+DS3231 rtc;
+bool h12;
+bool PM;
+bool Century = false;
 
 /*
 //DS18b20

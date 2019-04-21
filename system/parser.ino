@@ -9,7 +9,6 @@ void parser(String cmd) {
 
     int parameterIndex = 0;
 
-
     uint8_t i = 0;
     for (; i < cmd.length() && parameterIndex < MAX_PARAMETER; i++)  //divide the incoming command s into parameters
     {
@@ -50,8 +49,15 @@ void parser(String cmd) {
         case 'b':  //Previous          (cmdType/brightness 0-255)
             FastLED.setBrightness(parameters[1].toInt());
             Serial.print("Brightness set to ");
-            Serial.print(parameters[1].toInt()*100/255);
+            Serial.print(parameters[1].toInt() * 100 / 255);
             Serial.println("%");
+            break;
+        case 't':  //Previous          (cmdType/brightness 0-255)
+            if (parameters[1] == "s") {
+                setTime(parameters);
+            } else if (parameters[1] == "p") {
+                printTime();
+            }
             break;
         default:
             break;

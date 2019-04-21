@@ -6,13 +6,24 @@
 CRGB leds[NUM_LEDS];
 
 //Controls
-const byte BTN_A_PIN = 5;  //D1
+const byte BTN_A_PIN = 14;  //D3
 unsigned long lastInterrupt = 0;
 #define INTERRUPT_DEBOUNCE_TIME 50
 
 //Parser
 const char seperator = '/';
-#define MAX_PARAMETER 8
+#define MAX_PARAMETER 12
+
+//Time
+DateTime now;
+String dow[7] = {
+    "Montag",
+    "Dienstag",
+    "Mittwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
+    "Sonntag"};
 
 //System
 
