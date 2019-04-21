@@ -11,6 +11,10 @@ void checkSerial();
 void sysReset();
 void setTime(String parameters[]);
 void printTime();
+void addCMD(String newCMD);
+void delCMD(int n);
+void printCMDs();
+void switchCMDs(int a, int b);
 
 void app_fc();
 void app_snake();

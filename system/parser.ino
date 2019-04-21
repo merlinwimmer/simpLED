@@ -59,6 +59,23 @@ void parser(String cmd) {
                 printTime();
             }
             break;
+        case 'c':                        //command
+            if (parameters[1] == "a") {  //add cmd  
+            if (parameterIndex == 2) {      // (c/a/p0,p1,p2,p3...)
+                addCMD(parameters[2]);
+            } else {                        // or (c/a/p0/p1/p2/p3...)
+                addCMD(cmd.substring(4));
+            }
+            
+            } else if (parameters[1] == "d") {
+                delCMD(parameters[2].toInt());
+            } else if (parameters[1] == "p") {
+                printCMDs();
+            } else if (parameters[1] == "s") {
+                switchCMDs(parameters[2].toInt(), parameters[3].toInt());
+            }
+
+            break;
         default:
             break;
     }

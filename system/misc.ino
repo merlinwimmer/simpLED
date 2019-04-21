@@ -26,7 +26,7 @@ void btn_a_ISR() {
 void next(int steps) {
     cmdChanged = true;
     for (uint8_t i = 0; i < steps; i++) {
-        if (cmdIndex + 1 < COMMAND_COUNT) {
+        if (cmdIndex + 1 < command_count) {
             cmdIndex++;
         } else {
             cmdIndex = 0;
@@ -41,7 +41,7 @@ void previous(int steps) {
             if (cmdIndex > 0) {
                 cmdIndex--;
             } else {
-                cmdIndex = COMMAND_COUNT - 1;
+                cmdIndex = command_count - 1;
             }
         }
         lastInterrupt = millis();
@@ -50,7 +50,7 @@ void previous(int steps) {
 
 void sysReset() {
     //asm volatile("  jmp 0");
-    ESP.reset();
+    ESP.restart();
 }
 
 void setTime(String parameters[]) {  //   t/s/Y/M/D/w/H/M/S
@@ -66,10 +66,7 @@ void setTime(String parameters[]) {  //   t/s/Y/M/D/w/H/M/S
 }
 
 void printTime() {
-
-
-
-    Serial.print(dow[rtc.getDoW()-1]);
+    Serial.print(dow[rtc.getDoW() - 1]);
     Serial.print(", ");
     Serial.print(rtc.getDate(), DEC);
     Serial.print(".");
@@ -84,4 +81,40 @@ void printTime() {
     Serial.print(":");
     Serial.print(rtc.getSecond(), DEC);
     Serial.print("\n");
+}
+
+void addCMD(String newCMD) {
+    if (command_count < MAX_CMDS) {
+        command_count++;
+        newCMD.replace(",", "/");
+        cmdArr[command_count - 1] = newCMD;
+    }
+    printCMDs();
+}
+
+void delCMD(int n) {
+    if (command_count > 1) {
+        Serial.print("Deleting cmd ");
+        Serial.println(n);
+        command_count--;
+        for (int i = n; i < command_count; i++) {
+            cmdArr[i] = cmdArr[i + 1];
+        }
+        cmdArr[command_count] = "";
+    } else {
+        output("Only one cmd left");
+    }
+}
+
+void printCMDs() {
+    Serial.println("List of CMDs:");
+    for (int i = 0; i < command_count; i++) {
+        Serial.println("  " + cmdArr[i]);
+    }
+}
+
+void switchCMDs(int a, int b) {
+    String temp = cmdArr[a];
+    cmdArr[a] = cmdArr[b];
+    cmdArr[b] = temp;
 }

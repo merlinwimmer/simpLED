@@ -73,10 +73,9 @@ bool cmdChanged = true;
 byte currentApp = 0;
 byte cmdIndex = 0;
 
-#define COMMAND_COUNT 2
-String cmdArr[COMMAND_COUNT] = {
-    "a/0/200/50/10",
-    "a/1/100/3/3/4/5"};
+#define MAX_CMDS 10
+byte command_count = 2;
+String cmdArr[MAX_CMDS];
 
 //Standart Colors
 byte colors[16][3] = {

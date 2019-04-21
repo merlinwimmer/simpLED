@@ -16,4 +16,7 @@ void setup() {
     //attachInterrupt(digitalPinToInterrupt(BTN_B_PIN), btn_b_ISR, RISING);  //Isn't build in yet
 
     Serial.println("Setup done...");
+
+    cmdArr[0] = "a/0/200/50/10";
+    cmdArr[1] = "a/1/100/3/3/4/5";
 }

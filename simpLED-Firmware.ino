@@ -10,6 +10,7 @@
 #include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/parser.ino"
 #include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/serialCMD.ino"
 #include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/misc.ino"
+#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/config.ino"
 
 #include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/apps/fc.ino"
 #include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/apps/snake.ino"
