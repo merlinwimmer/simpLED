@@ -1,9 +1,9 @@
 void parser(String cmd) {
     String parameters[MAX_PARAMETER] = "";
-    Serial.println("Parser started for command: " + cmd);
+    output("Parser started for command: " + cmd + "\n");
 
     if (cmd.equals("__RESET__") || cmd.equals("RST")) {
-        Serial.println("Resetting simpLED...");
+        output("Resetting simpLED...\n");
         sysReset();
     }
 
@@ -25,20 +25,27 @@ void parser(String cmd) {
         errorIndex = 2;
     }
 
-    Serial.println("Following parameters were parsed: ");
+    output("Following parameters were parsed: \n");
     for (int i = 0; i <= parameterIndex; i++) {
         Serial.println("    " + parameters[i]);
     }
 
-    Serial.print("parameterIndex is: ");
-    Serial.print(parameterIndex);
-    Serial.print(", cmType is: ");
-    Serial.println(cmdType);
+    output("parameterIndex is: ");
+    output((String) parameterIndex);
+    output(", cmType is: ");
+    output((String) cmdType + "\n");
 
     switch (cmdType) {
-        case 'a':  //App-Command    (cmdType/AppID/Parameter1/Parameter2/Parameter3/ ...)
-            currentApp = parameters[1].toInt();
-            app_setup[currentApp](parameters);
+        case 'a':                        //App-Command    (cmdType/action/AppID/Parameter1/Parameter2/Parameter3/ ...)
+            if (parameters[1] == "a") {  //add app
+                addApp(parameters);
+            } else if (parameters[1] == "d") {  //delete App
+                delApp(parameters[2].toInt());
+            } else if (parameters[1] == "p") {  //print all Apps with parameters
+                printApps();
+            } else if (parameters[1] == "s") {  //switch two Apps
+                switchApps(parameters[2].toInt(), parameters[3].toInt());
+            }
             break;
         case 'n':  //Next          (cmdType/optionally: steps forward)
             next(parameterIndex > 0 ? parameters[1].toInt() : 1);
@@ -46,35 +53,18 @@ void parser(String cmd) {
         case 'p':  //Previous          (cmdType/optionally: steps backwards)
             previous(parameterIndex > 0 ? parameters[1].toInt() : 1);
             break;
-        case 'b':  //Previous          (cmdType/brightness 0-255)
+        case 'b':  //Brightness          (cmdType/brightness 0-255)
             FastLED.setBrightness(parameters[1].toInt());
-            Serial.print("Brightness set to ");
-            Serial.print(parameters[1].toInt() * 100 / 255);
-            Serial.println("%");
+            output("Brightness set to ");
+            output((String) (parameters[1].toInt() * 100 / 255));
+            output("%\n");
             break;
-        case 't':  //Previous          (cmdType/brightness 0-255)
-            if (parameters[1] == "s") {
+        case 't':                        //time          (cmdType/s)
+            if (parameters[1] == "s") {  //set
                 setTime(parameters);
-            } else if (parameters[1] == "p") {
+            } else if (parameters[1] == "p") {  //print
                 printTime();
             }
-            break;
-        case 'c':                        //command
-            if (parameters[1] == "a") {  //add cmd  
-            if (parameterIndex == 2) {      // (c/a/p0,p1,p2,p3...)
-                addCMD(parameters[2]);
-            } else {                        // or (c/a/p0/p1/p2/p3...)
-                addCMD(cmd.substring(4));
-            }
-            
-            } else if (parameters[1] == "d") {
-                delCMD(parameters[2].toInt());
-            } else if (parameters[1] == "p") {
-                printCMDs();
-            } else if (parameters[1] == "s") {
-                switchCMDs(parameters[2].toInt(), parameters[3].toInt());
-            }
-
             break;
         default:
             break;

@@ -1,14 +1,7 @@
 void loop() {
-    delay(10);
-    //Serial.println("loop");
-    if (cmdChanged) {
-        Serial.print("cmd has Changed: cmdIndex = ");
-        Serial.println(cmdIndex, DEC);
-        parser(cmdArr[cmdIndex]);
-        cmdChanged = false;
-    }
+    delay(1);
 
-    app[currentApp]();
+    apps[currentApp]->refresh();
     checkSerial();
     errorOut();
 }

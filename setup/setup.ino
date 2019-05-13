@@ -17,6 +17,8 @@ void setup() {
 
     Serial.println("Setup done...");
 
-    cmdArr[0] = "a/0/200/50/10";
-    cmdArr[1] = "a/1/100/3/3/4/5";
+    parser("a/a/0/200/50/10");
+    apps[0]->setName("Vollbild Farbe");
+    parser("a/a/1/40/3/3/4/5");
+    apps[1]->setName("Schlangen-Animation");
 }
