@@ -1,19 +1,19 @@
 //simpLED-Firmware
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/setup/header.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/setup/libraries.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/setup/functions.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/setup/variables.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/setup/setup.ino"
 
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/libraries.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/functions.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/variables.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/appVar.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/setup/setup.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/loop.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/parser.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/serialCMD.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/misc.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/config.ino"
 
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/loop.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/parser.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/serialCMD.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/misc.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/system/config.ino"
-
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/apps/fc.ino"
-#include "C:/Users/lauri/Documents/simpLED/simpLED-Firmware/simpLED/apps/snake.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/apps/App.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/apps/FullColor.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/apps/SnakeA.ino"
 
 /*
 #include "apps/fc.ino"

@@ -5,14 +5,18 @@ void errorOut() {
 
     //output(errorStore[errorIndex] + '(' + errorComment[errorStore[errorIndex].charAt(0)] + ')');
     //output(errorStore[errorIndex] + ' (' + errorComment[(int) errorStore[errorIndex].charAt(0)] + ')');
-    output(errorStore[errorIndex] + " (" + errorComment[errorStore[errorIndex].charAt(0) - '0'] + ")");
+    output(errorStore[errorIndex] + " (" + errorComment[errorStore[errorIndex].charAt(0) - '0'] + ")\n");
 
     errorIndex = -1;
 }
 
 void output(String msg) {
-    Serial.println(msg);
-
+    Serial.print(msg);
+    //output via Wifi or other channels to be added
+}
+void outputln(String msg) {
+    Serial.print(msg);
+    Serial.println();
     //output via Wifi or other channels to be added
 }
 
@@ -24,24 +28,23 @@ void btn_a_ISR() {
 }
 
 void next(int steps) {
-    cmdChanged = true;
     for (uint8_t i = 0; i < steps; i++) {
-        if (cmdIndex + 1 < command_count) {
-            cmdIndex++;
+        if (currentApp + 1 < appCount) {
+            currentApp++;
         } else {
-            cmdIndex = 0;
+            currentApp = 0;
         }
+        output("New App: " + apps[currentApp]->getName() + "\n");
     }
 }
 
 void previous(int steps) {
     if (lastInterrupt + INTERRUPT_DEBOUNCE_TIME < millis()) {
-        cmdChanged = true;
         for (uint8_t i = 0; i < steps; i++) {
-            if (cmdIndex > 0) {
-                cmdIndex--;
+            if (currentApp > 0) {
+                currentApp--;
             } else {
-                cmdIndex = command_count - 1;
+                currentApp = appCount - 1;
             }
         }
         lastInterrupt = millis();
@@ -81,40 +84,4 @@ void printTime() {
     Serial.print(":");
     Serial.print(rtc.getSecond(), DEC);
     Serial.print("\n");
-}
-
-void addCMD(String newCMD) {
-    if (command_count < MAX_CMDS) {
-        command_count++;
-        newCMD.replace(",", "/");
-        cmdArr[command_count - 1] = newCMD;
-    }
-    printCMDs();
-}
-
-void delCMD(int n) {
-    if (command_count > 1) {
-        Serial.print("Deleting cmd ");
-        Serial.println(n);
-        command_count--;
-        for (int i = n; i < command_count; i++) {
-            cmdArr[i] = cmdArr[i + 1];
-        }
-        cmdArr[command_count] = "";
-    } else {
-        output("Only one cmd left");
-    }
-}
-
-void printCMDs() {
-    Serial.println("List of CMDs:");
-    for (int i = 0; i < command_count; i++) {
-        Serial.println("  " + cmdArr[i]);
-    }
-}
-
-void switchCMDs(int a, int b) {
-    String temp = cmdArr[a];
-    cmdArr[a] = cmdArr[b];
-    cmdArr[b] = temp;
 }

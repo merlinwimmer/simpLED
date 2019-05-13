@@ -60,25 +60,13 @@ bool wifiMode = false;
 byte brightness = 255;
 
 //Apps
-
-void (*app[2])(){
-    app_fc,
-    app_snake};
-
-void (*app_setup[2])(String parameters[]){
-    app_fc_setup,
-    app_snake_setup};
-
-bool cmdChanged = true;
+#define MAX_APPS 2
+App** apps = new App*[MAX_APPS];
+byte appCount = 0;
 byte currentApp = 0;
-byte cmdIndex = 0;
-
-#define MAX_CMDS 10
-byte command_count = 2;
-String cmdArr[MAX_CMDS];
 
 //Standart Colors
-byte colors[16][3] = {
+byte colorLib[16][3] = {
     {0, 0, 0},        //black
     {255, 255, 255},  //white
     {255, 0, 0},      //red
