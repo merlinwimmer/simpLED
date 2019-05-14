@@ -49,11 +49,12 @@ void delApp(int n) {
     if (appCount > 1) {
         output("Deleting cmd " + n);
         appCount--;
-        delete apps[n];
         for (int i = n; i < appCount; i++) {
             apps[i] = apps[i + 1];
         }
-        delete apps[appCount];
+        if (n == currentApp) {
+            next(1);
+        }
     } else {
         output("Only one cmd left");
     }
