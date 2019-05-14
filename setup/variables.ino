@@ -60,7 +60,7 @@ bool wifiMode = false;
 byte brightness = 255;
 
 //Apps
-#define MAX_APPS 2
+#define MAX_APPS 15
 App** apps = new App*[MAX_APPS];
 byte appCount = 0;
 byte currentApp = 0;
