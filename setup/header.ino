@@ -28,6 +28,8 @@ class SnakeA : public App {
     short int position;
     byte colors[10];  //max 10 different colors
     long unsigned int lastMillis;
+    boolean up = true; // !up is down
+    boolean right = true; // !right is left
 
    public:
     SnakeA(int delay, byte colorCount, byte colors[]);
@@ -55,4 +57,5 @@ class draw {
     public:
      static void pixel(short p, byte r, byte g, byte b);
      static void fill(byte r, byte g, byte b);
+     static void xy(short x, short y, byte r, byte g, byte b);
 };
