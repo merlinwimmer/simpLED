@@ -9,6 +9,7 @@
 #include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/parser.ino"
 #include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/serialCMD.ino"
 #include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/misc.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/draw.ino"
 #include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/system/config.ino"
 
 #include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/apps/App.ino"

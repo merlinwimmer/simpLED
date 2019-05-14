@@ -49,3 +49,10 @@ class Configuration {
     void load();
     void store();
 };
+
+class draw {
+    private:
+    public:
+     static void pixel(short p, byte r, byte g, byte b);
+     static void fill(byte r, byte g, byte b);
+};

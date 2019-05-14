@@ -6,7 +6,7 @@ FullColor::FullColor(byte r, byte g, byte b) {
 }
 
 void FullColor::refresh()  {
-    fill_solid(leds, NUM_LEDS, CRGB(this->color[0], this->color[1], this->color[2]));
+    draw::fill(this->color[0], this->color[1], this->color[2]);
     FastLED.show();
 }
 

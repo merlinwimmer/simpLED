@@ -2,8 +2,7 @@ SnakeA::SnakeA(int delay, byte colorCount, byte colors[]) {  //parameters: cmdTy
     Serial.println("Setting up Color Snake App...");
     this->delay = delay;
     this->colorCount = colorCount;
-    for (int i = 0; i < colorCount; i++)
-    {
+    for (int i = 0; i < colorCount; i++) {
         this->colors[i] = colors[i];
     }
     this->colorIndex = 0;
@@ -20,14 +19,13 @@ void SnakeA::refresh() {
         if (this->colorIndex >= this->colorCount) {
             this->colorIndex = 0;
         }
-    
+
         int snake_color = this->colors[this->colorIndex];
 
         byte r = colorLib[snake_color][0];
         byte g = colorLib[snake_color][1];
         byte b = colorLib[snake_color][2];
-        leds[this->position] = CRGB(r,g,b);
-
+        draw::pixel(this->position, r, g, b);
         FastLED.show();
 
         this->position++;
@@ -35,6 +33,5 @@ void SnakeA::refresh() {
     }
 }
 
-String SnakeA::print()  {
-
+String SnakeA::print() {
 }
