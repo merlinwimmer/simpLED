@@ -67,6 +67,7 @@ void parser(String cmd) {
             }
             break;
         default:
+            errorIndex = 5; //No valid Command
             break;
     }
 }
