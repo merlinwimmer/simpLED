@@ -25,11 +25,13 @@ class SnakeA : public App {
     int delay;
     byte colorIndex;
     byte colorCount;
-    short int position;
+    short int xPos;
+    short int yPos;
     byte colors[10];  //max 10 different colors
     long unsigned int lastMillis;
-    boolean up = true; // !up is down
-    boolean right = true; // !right is left
+    boolean up; // !up is down
+    boolean right; // !right is left
+    boolean bounce;
 
    public:
     SnakeA(int delay, byte colorCount, byte colors[]);

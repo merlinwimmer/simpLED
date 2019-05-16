@@ -30,12 +30,13 @@ void addApp(String parameters[]) {
             case 1: {  //SnakeAnimation
                 outputln("Snake Animation");
                 int d = parameters[i++].toInt();
+                char bounce = parameters[i++].charAt(0);
                 int colorCount = parameters[i++].toInt();
                 byte temp_colors[colorCount];
                 for (int j = 0; j < colorCount; j++) {
                     temp_colors[j] = parameters[i++].toInt();
                 }
-                apps[appCount] = new SnakeA(d, colorCount, temp_colors);
+                apps[appCount] = new SnakeA(d, bounce, colorCount, temp_colors);
                 break;
             }
             default:
