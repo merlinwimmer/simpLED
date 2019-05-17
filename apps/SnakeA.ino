@@ -1,16 +1,6 @@
-SnakeA::SnakeA(int delay, char bounce, byte colorCount, byte colors[]) {  //parameters: cmdType/AppID/delay/number of colors/color1/color2/color3/ ...
-    Serial.println("Setting up Color Snake App...");
-    this->delay = delay;
-    this->colorCount = colorCount;
-    for (int i = 0; i < colorCount; i++) {
-        this->colors[i] = colors[i];
-    }
-    this->colorIndex = 0;
-    this->xPos = 0;
-    this->yPos = 0;
-    this->up = true;
-    this->right = true;
-    this->bounce = bounce == '1' ? true : false;
+SnakeA::SnakeA() {  //parameters: cmdType/bounce/AppID/delay/number of colors/color1/color2/color3/ ...
+    this->setName("Snake Animation");
+    outputln("Constructed new " + this->getName());
 }
 
 void SnakeA::refresh() {
@@ -43,6 +33,24 @@ void SnakeA::refresh() {
     }
 }
 
+String SnakeA::get() {
+    String s = "1";  //AppID
+    s += (String) "/" + (this->bounce ? "1" : "0");
+    s += (String) "/" + this->delay;
+    s += (String) "/" + this->colorCount;
+    for (short i = 0; i < this->colorCount; i++) {
+        s += "/";
+        s += (String)this->colors[i];
+    }
+    return s;
+}
 
-String SnakeA::print() {
+void SnakeA::set(String parameters[]) {
+    short i = 0;
+    this->bounce = parameters[i++] == "1" ? true : false;
+    this->delay = parameters[i++].toInt();
+    this->colorCount = parameters[i++].toInt();
+    for (int j = 0; j < this->colorCount; j++) {
+        this->colors[j] = parameters[i++].toInt();
+    }
 }

@@ -8,11 +8,11 @@ CRGB leds[NUM_LEDS];
 //Controls
 const byte BTN_A_PIN = 14;  //D3
 unsigned long lastInterrupt = 0;
-#define INTERRUPT_DEBOUNCE_TIME 50
+const unsigned short INTERRUPT_DEBOUNCE_TIME = 50;
 
 //Parser
 const char seperator = '/';
-#define MAX_PARAMETER 12
+const unsigned short MAX_PARAMETER = 12;
 
 //Time
 DateTime now;
@@ -30,7 +30,7 @@ String dow[7] = {
 String serialString = "";     // a String to hold incoming data
 bool stringComplete = false;  // whether the string is complete
 
-byte errorIndex = 0;  //-1 means no error   syntax (is analyzed by errorOut() ): errortype errormessage
+short errorIndex = -1;  //-1 means no error   syntax (is analyzed by errorOut() ): errortype errormessage
 const String errorStore[] = {
     /*0*/ "0 No Error",
     /*1*/ "0 ",
@@ -60,7 +60,7 @@ bool wifiMode = false;
 byte brightness = 255;
 
 //Apps
-#define MAX_APPS 15
+const unsigned short MAX_APPS = 15;
 App** apps = new App*[MAX_APPS];
 byte appCount = 0;
 byte currentApp = 0;

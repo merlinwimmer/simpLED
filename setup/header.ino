@@ -5,39 +5,44 @@ class App {
    public:
     void setName(String name);
     String getName();
-    virtual String print();
-    virtual void refresh();
+    virtual void refresh();                 //Is called on every loop iteration / frame, so the current app can draw the pixels
+    virtual String get();                   //returns cmd part that contains info for that object
+    virtual void set(String parameters[]);  //sets object to info contained in parameters
 };
 
 class FullColor : public App {
    private:
-    byte color[3];
+    byte color[3] = {
+        200, 50, 10};
 
    public:
-    FullColor(byte r, byte g, byte b);
+    FullColor();
     ~FullColor();
-    String print();
     void refresh();
+    String get();
+    void set(String parameters[]);
 };
 
 class SnakeA : public App {
    private:
-    int delay;
+    int delay = 50;
     byte colorIndex;
-    byte colorCount;
     short int xPos;
     short int yPos;
-    byte colors[10];  //max 10 different colors
+    byte colorCount = 3;
+    byte colors[10] = {
+        2, 5, 8, 0, 0, 0, 0, 0, 0, 0};  //max 10 different colors
     long unsigned int lastMillis;
-    boolean up; // !up is down
-    boolean right; // !right is left
-    boolean bounce;
+    boolean up = true;     // !up is down
+    boolean right = true;  // !right is left
+    boolean bounce = true;
 
    public:
-    SnakeA(int delay, byte colorCount, byte colors[]);
+    SnakeA();
     ~SnakeA();
-    String print();
     void refresh();
+    String get();
+    void set(String parameters[]);
 };
 
 class Configuration {
@@ -55,9 +60,9 @@ class Configuration {
 };
 
 class draw {
-    private:
-    public:
-     static void pixel(short p, byte r, byte g, byte b);
-     static void fill(byte r, byte g, byte b);
-     static void xy(short x, short y, byte r, byte g, byte b);
+   private:
+   public:
+    static void pixel(short p, byte r, byte g, byte b);
+    static void fill(byte r, byte g, byte b);
+    static void xy(short x, short y, byte r, byte g, byte b);
 };

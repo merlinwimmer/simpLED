@@ -19,6 +19,9 @@ void setup() {
 
     parser("a/a/0/200/50/10");
     apps[0]->setName("Vollbild Farbe");
-    parser("a/a/1/60/3/3/4/6");
+    parser("a/a/1/1/60/3/3/4/6");
     apps[1]->setName("Schlangen-Animation");
+
+
+    outputln("### Setup done");
 }

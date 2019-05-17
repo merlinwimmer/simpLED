@@ -1,13 +1,16 @@
 void errorOut() {
-    if (errorIndex == 0) {
+    if (errorIndex == -1) {
         return;
+    } else {
+        //output(errorStore[errorIndex] + '(' + errorComment[errorStore[errorIndex].charAt(0)] + ')');
+        //output(errorStore[errorIndex] + ' (' + errorComment[(int) errorStore[errorIndex].charAt(0)] + ')');
+        output(errorStore[errorIndex]);
+        output(" (");
+        output(errorComment[errorStore[errorIndex].charAt(0) - '0']);
+        outputln(")");
+
+        errorIndex = -1;
     }
-
-    //output(errorStore[errorIndex] + '(' + errorComment[errorStore[errorIndex].charAt(0)] + ')');
-    //output(errorStore[errorIndex] + ' (' + errorComment[(int) errorStore[errorIndex].charAt(0)] + ')');
-    output(errorStore[errorIndex] + " (" + errorComment[errorStore[errorIndex].charAt(0) - '0'] + ")\n");
-
-    errorIndex = -1;
 }
 
 void output(String msg) {

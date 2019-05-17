@@ -6,44 +6,32 @@ String App::getName() {
     return this->name;
 }
 
-String App::print() {
-    return "no print function defined for " + this->getName() + "\n";
-}
 void App::refresh() {
     output("no refresh function defined for " + this->getName() + "\n");
 }
 
-void addApp(String parameters[]) {
+String App::get() {
+    return ("no get function defined for " + this->getName() + "\n");
+}
+
+void App::set(String parameters[]) {
+    output("no set function defined for " + this->getName() + "\n");
+}
+
+void addApp(byte appID, String parameters[]) {
+    int n = appCount;
     if (appCount < MAX_APPS) {
-        output("Adding App: ");
-        byte i = 2;
-        switch (parameters[i++].toInt())  //AppID
-        {
-            case 0: {  //Full Screen Color
-                outputln("Full Color");
-                byte r = parameters[i++].toInt();
-                byte g = parameters[i++].toInt();
-                byte b = parameters[i++].toInt();
-                apps[appCount] = new FullColor(r, g, b);
+        outputln("Adding new App...");
+        switch (appID) {
+            case 0:
+                apps[n] = new FullColor();
                 break;
-            }
-            case 1: {  //SnakeAnimation
-                outputln("Snake Animation");
-                int d = parameters[i++].toInt();
-                char bounce = parameters[i++].charAt(0);
-                int colorCount = parameters[i++].toInt();
-                byte temp_colors[colorCount];
-                for (int j = 0; j < colorCount; j++) {
-                    temp_colors[j] = parameters[i++].toInt();
-                }
-                apps[appCount] = new SnakeA(d, bounce, colorCount, temp_colors);
+            case 1:
+                apps[n] = new SnakeA();
                 break;
-            }
-            default:
-                errorIndex = 4;  //No valid AppID
-                return;
         }
         appCount++;
+        setApp(n, parameters);
     } else {
         outputln("No more storage for another app");
     }
@@ -51,7 +39,7 @@ void addApp(String parameters[]) {
 
 void delApp(int n) {
     if (appCount > 1) {
-        output("Deleting cmd " + n);
+        outputln("Deleting App no. " + String(n));
         appCount--;
         for (int i = n; i < appCount; i++) {
             apps[i] = apps[i + 1];
@@ -60,19 +48,33 @@ void delApp(int n) {
             next(1);
         }
     } else {
-        output("Only one cmd left");
+        outputln("Can't delete, only one App left");
+    }
+}
+
+void getApp(int n) {
+    if (n < appCount) {
+        outputln(apps[n]->get());
     }
 }
 
 void printApps() {
-    output("Apps: {");
     for (int i = 0; i < appCount; i++) {
-        output(apps[i]->print());
+        output(apps[i]->getName() + ": ");
+        outputln((String)apps[i]->get());
     }
-    output("}");
 }
 
-void switchApps(int a, int b) {
+void setApp(int n, String parameters[]) {
+    if (n < appCount) {
+        outputln("Setting " + String(n) + "th app to given parameters...");
+        apps[n]->set(parameters);
+    } else {
+        outputln("There is no " + String(n) + "th app!");
+    }
+}
+
+void swapApps(int a, int b) {
     App* temp = apps[a];
     apps[a] = apps[b];
     apps[b] = temp;
