@@ -34,7 +34,7 @@ void next(int steps) {
         } else {
             currentApp = 0;
         }
-        output("New App: " + apps[currentApp]->getName() + "\n");
+        output("Next App: " + apps[currentApp]->getName() + "\n");
     }
 }
 
@@ -46,6 +46,7 @@ void previous(int steps) {
             } else {
                 currentApp = appCount - 1;
             }
+            output("Previous App: " + apps[currentApp]->getName() + "\n");
         }
         lastInterrupt = millis();
     }
