@@ -37,7 +37,7 @@ void parser(String cmd) {
     }
     if (parameterIndex >= 3) {
         outputln("Following shortParam's were parsed:");
-        for (int i = 0; i <= parameterIndex-3; i++) {
+        for (int i = 0; i <= parameterIndex - 3; i++) {
             outputln("    " + shortParam[i]);
         }
     }
@@ -55,7 +55,11 @@ void parser(String cmd) {
             } else if (parameters[1] == "d") {  //delete App
                 delApp(parameters[2].toInt());
             } else if (parameters[1] == "g") {  //get App cmd
-                getApp(parameters[2].toInt());
+                if (parameters[2] == "c") {     //get current App
+                    getApp(currentApp);
+                } else {
+                    getApp(parameters[2].toInt());
+                }
             } else if (parameters[1] == "p") {  //print all Apps with parameters
                 printApps();
             } else if (parameters[1] == "s") {  //set all Apps with parameters
