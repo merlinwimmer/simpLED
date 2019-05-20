@@ -22,7 +22,7 @@ void parser(String cmd) {
 
     String shortParam[MAX_PARAMETER] = "";  //Parameters without the first 3 parameters, so cmdType, operation and appType/appPosition
     byte j = 0;
-    for (byte i = 3; i <= parameterIndex; i++) {
+    for (byte i = 2; i <= parameterIndex; i++) {
         shortParam[j] = parameters[i];
         j++;
     }
@@ -51,7 +51,7 @@ void parser(String cmd) {
         case 'a':                        //App-Command    (cmdType/action/AppID/Parameter1/Parameter2/Parameter3/ ...)
             if (parameters[1] == "a") {  //add app
 
-                addApp(parameters[2].toInt(), shortParam);
+                addApp(shortParam);
             } else if (parameters[1] == "d") {  //delete App
                 delApp(parameters[2].toInt());
             } else if (parameters[1] == "g") {  //get App cmd
@@ -63,7 +63,7 @@ void parser(String cmd) {
             } else if (parameters[1] == "p") {  //print all Apps with parameters
                 outputln(getApps());
             } else if (parameters[1] == "s") {  //set all Apps with parameters
-                setApp(parameters[2].toInt(), shortParam);
+                setApp(shortParam);
             } else if (parameters[1] == "w") {  //sWap two Apps
                 swapApps(parameters[2].toInt(), parameters[3].toInt());
             }

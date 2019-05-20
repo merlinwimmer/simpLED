@@ -45,16 +45,9 @@ class SnakeA : public App {
     void set(String parameters[]);
 };
 
-class Configuration {
+class configManager {
    private:
    public:
-    String wifiSSIDs[];
-    String wifiKeys[];
-    byte wifiIndex;
-    byte brightness;
-    byte cmdIndex;
-    byte commandCount;
-    String cmdArr[];
     void load();
     void store();
 };

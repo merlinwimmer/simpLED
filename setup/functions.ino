@@ -13,7 +13,7 @@ void checkSerial();
 void sysReset();
 void setTime(String parameters[]);
 void printTime();
-void addApp(byte appID, String parameters[]);
+void addApp(String parameters[]);
 void delApp(int n);
 String getApp(int n);
 String getApps();

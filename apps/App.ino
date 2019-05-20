@@ -18,8 +18,9 @@ void App::set(String parameters[]) {
     output("no set function defined for " + this->getName() + "\n");
 }
 
-void addApp(byte appID, String parameters[]) {
-    int n = appCount;
+void addApp(String parameters[]) {
+    int n = appCount.toInt();
+    short appID = parameters[0];
     if (appCount < MAX_APPS) {
         outputln("Adding new App...");
         switch (appID) {

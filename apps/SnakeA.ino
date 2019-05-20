@@ -46,7 +46,7 @@ String SnakeA::get() {
 }
 
 void SnakeA::set(String parameters[]) {
-    short i = 0;
+    short i = 1;
     this->bounce = parameters[i++] == "1" ? true : false;
     this->delay = parameters[i++].toInt();
     this->colorCount = parameters[i++].toInt();
