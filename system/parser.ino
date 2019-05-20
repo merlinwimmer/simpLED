@@ -63,7 +63,7 @@ void parser(String cmd) {
             } else if (parameters[1] == "p") {  //print all Apps with parameters
                 outputln(getApps());
             } else if (parameters[1] == "s") {  //set all Apps with parameters
-                setApp(shortParam);
+                setApp(parameters[2].toInt(), shortParam);
             } else if (parameters[1] == "w") {  //sWap two Apps
                 swapApps(parameters[2].toInt(), parameters[3].toInt());
             }
