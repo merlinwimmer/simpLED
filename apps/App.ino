@@ -52,17 +52,26 @@ void delApp(int n) {
     }
 }
 
-void getApp(int n) {
+String getApp(int n) {
     if (n < appCount) {
-        outputln(apps[n]->get());
+        return apps[n]->get();
     }
+    return "No " + String(n) + ". found.";
 }
 
-void printApps() {
+String getApps() {
+    String appString = "";
     for (int i = 0; i < appCount; i++) {
-        output(apps[i]->getName() + ": ");
-        outputln((String)apps[i]->get());
+        appString += apps[i]->getName();
+        appString += "{";
+        appString += apps[i]->get();
+        if (i + 1 < appCount) {     // ',' between two apps
+            appString += APP_SEPERATOR;
+        } else {                    // ';' after last app
+            appString += APP_TERMINATOR;
+        }
     }
+    return appString;
 }
 
 void setApp(int n, String parameters[]) {

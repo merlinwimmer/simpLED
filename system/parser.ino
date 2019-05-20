@@ -56,12 +56,12 @@ void parser(String cmd) {
                 delApp(parameters[2].toInt());
             } else if (parameters[1] == "g") {  //get App cmd
                 if (parameters[2] == "c") {     //get current App
-                    getApp(currentApp);
+                    outputln(getApp(currentApp));
                 } else {
-                    getApp(parameters[2].toInt());
+                    outputln(getApp(parameters[2].toInt()));
                 }
             } else if (parameters[1] == "p") {  //print all Apps with parameters
-                printApps();
+                outputln(getApps());
             } else if (parameters[1] == "s") {  //set all Apps with parameters
                 setApp(parameters[2].toInt(), shortParam);
             } else if (parameters[1] == "w") {  //sWap two Apps
