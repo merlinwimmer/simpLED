@@ -17,7 +17,7 @@ String FullColor::get() {
 }
 
 void FullColor::set(String parameters[]) {
-    byte i = 2;
+    byte i = 1;
     this->color[0] = parameters[i++].toInt();
     this->color[1] = parameters[i++].toInt();
     this->color[2] = parameters[i++].toInt();
