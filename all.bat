@@ -11,3 +11,6 @@ type *.ino >> ../all.txt
 
 cd ../system
 type *.ino >> ../all.txt
+
+cd ../
+type all.txt|clip
