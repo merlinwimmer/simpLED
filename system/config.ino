@@ -4,6 +4,7 @@ void configManager::load() {
     Serial.println("EEPROM.get(EEPROM_BEGIN, config);");
     EEPROM.get(EEPROM_BEGIN, config);
     brightness = config.brightness;
+    FastLED.setBrightness(brightness);
     currentApp = config.currentApp;
     appCount = config.appCount;
     String appString = "";
