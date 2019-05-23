@@ -1,3 +1,5 @@
 .vscode/
 all.txt
 all.bat
+stats.bat
+/stats
