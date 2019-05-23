@@ -22,6 +22,7 @@ void setup() {
     parser("a/a/1/1/60/3/3/4/6");
     apps[1]->setName("Schlangen-Animation");
 
+    configManager::load();
 
     outputln("### Setup done");
 }
