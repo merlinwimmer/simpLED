@@ -19,8 +19,8 @@ void App::set(String parameters[]) {
 }
 
 void addApp(String parameters[]) {
-    int n = appCount.toInt();
-    short appID = parameters[0];
+    int n = appCount;
+    short appID = parameters[0].toInt();
     if (appCount < MAX_APPS) {
         outputln("Adding new App...");
         switch (appID) {
@@ -34,7 +34,7 @@ void addApp(String parameters[]) {
         appCount++;
         setApp(n, parameters);
     } else {
-        outputln("No more storage for another app");
+        outputln("No more storage for another app, already " + String(appCount + 1) + " Apps saved");
     }
 }
 
@@ -66,6 +66,7 @@ String getApps() {
         appString += apps[i]->getName();
         appString += "{";
         appString += apps[i]->get();
+        appString += "}";
         if (i + 1 < appCount) {     // ',' between two apps
             appString += APP_SEPERATOR;
         } else {                    // ';' after last app
