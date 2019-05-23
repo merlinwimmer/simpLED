@@ -87,6 +87,18 @@ void parser(String cmd) {
             output((String)(parameters[1].toInt() * 100 / 255));
             output("%\n");
             break;
+        case 's':   //system
+            if (parameters[1]=="s") {   //Status
+            outputln("\n### Status: ###");
+                output("Time: ");
+                printTime();
+                outputln("Brightness: " + String(brightness));
+                outputln("MAX_APPS: " + String(MAX_APPS));
+                outputln("appCount: " + String(appCount));
+                outputln("currentApp: " + String(currentApp));
+                outputln("Apps: " + getApps());
+            }
+            break;
         case 't':                        //time          (cmdType/s)
             if (parameters[1] == "s") {  //set
                 setTime(parameters);
