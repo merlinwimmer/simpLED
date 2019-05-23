@@ -48,8 +48,8 @@ class SnakeA : public App {
 class configManager {
    private:
    public:
-    void load();
-    void store();
+    static void load();
+    static void store();
 };
 
 class draw {
