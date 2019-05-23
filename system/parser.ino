@@ -35,9 +35,9 @@ void parser(String cmd) {
     for (int i = 0; i <= parameterIndex; i++) {
         outputln("    " + parameters[i]);
     }
-    if (parameterIndex >= 3) {
+    if (parameterIndex >= 2) {
         outputln("Following shortParam's were parsed:");
-        for (int i = 0; i <= parameterIndex - 3; i++) {
+        for (int i = 0; i <= parameterIndex - 2; i++) {
             outputln("    " + shortParam[i]);
         }
     }
@@ -66,6 +66,13 @@ void parser(String cmd) {
                 setApp(parameters[2].toInt(), shortParam);
             } else if (parameters[1] == "w") {  //sWap two Apps
                 swapApps(parameters[2].toInt(), parameters[3].toInt());
+            }
+            break;
+        case 'c': 
+            if (parameters[1] == "l") {     //Load config
+                configManager::load();
+            } else if (parameters[1] == "s")  {     //Store config
+                configManager::store();
             }
             break;
         case 'n':  //Next          (cmdType/optionally: steps forward)

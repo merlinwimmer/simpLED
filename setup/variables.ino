@@ -59,6 +59,19 @@ const String errorComment[] = {
 bool wifiMode = false;
 byte brightness = 255;
 
+//Config
+const short EEPROM_BEGIN = 0;
+const char APP_SEPERATOR = ',';
+const char APP_TERMINATOR = ';';
+#define APP_MAX_LENGTH 400
+struct {
+    char appCharArr[APP_MAX_LENGTH];
+    byte brightness;
+    byte currentApp;
+    byte appCount;
+} config;
+
+
 //Apps
 const unsigned short MAX_APPS = 15;
 App** apps = new App*[MAX_APPS];
