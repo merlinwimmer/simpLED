@@ -58,4 +58,5 @@ class draw {
     static void pixel(short p, byte r, byte g, byte b);
     static void fill(byte r, byte g, byte b);
     static void xy(short x, short y, byte r, byte g, byte b);
+    static void digit(byte digit, byte xOffs, byte yOffs, byte r, byte g, byte b);
 };
