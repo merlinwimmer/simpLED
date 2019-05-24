@@ -4,7 +4,9 @@ void draw::pixel(short p, byte r, byte g, byte b) {
 }
 
 void draw::fill(byte r, byte g, byte b) {
-    fill_solid(leds, NUM_LEDS, CRGB(r, g, b));
+    for(int i = 0; i < NUM_LEDS; i++) {
+        leds[i] = CRGB(r, g, b);
+    }
     //Support for external slave simpLEDs to be added
 }
 
@@ -24,5 +26,4 @@ void draw::digit(byte digit, byte xOffs, byte yOffs, byte r, byte g, byte b) {
         }
         p++;
     }
-    FastLED.show();
 }
