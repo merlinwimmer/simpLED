@@ -15,6 +15,7 @@
 #include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/apps/App.ino"
 #include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/apps/FullColor.ino"
 #include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/apps/SnakeA.ino"
+#include "C:/Users/lauri/Documents/simpLED/Arduino/simpLED-Firmware/apps/Clock.ino"
 
 /*
 #include "apps/fc.ino"

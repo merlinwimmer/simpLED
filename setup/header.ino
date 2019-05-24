@@ -45,6 +45,19 @@ class SnakeA : public App {
     void set(String parameters[]);
 };
 
+
+class Clock : public App {
+   private:
+    byte color[2] = {5, 10};
+
+   public:
+    Clock();
+    ~Clock();
+    void refresh();
+    String get();
+    void set(String parameters[]);
+};
+
 class configManager {
    private:
    public:

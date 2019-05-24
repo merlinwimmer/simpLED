@@ -30,6 +30,9 @@ void addApp(String parameters[]) {
             case 1:
                 apps[n] = new SnakeA();
                 break;
+            case 2:
+                apps[n] = new Clock();
+                break;
         }
         appCount++;
         setApp(n, parameters);
