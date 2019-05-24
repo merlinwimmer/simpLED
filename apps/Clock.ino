@@ -4,6 +4,7 @@ Clock::Clock() {
 }
 
 void Clock::refresh() {
+    draw::fill(0, 0, 0);
     byte r = colorLib[this->color[0]][0];
     byte g = colorLib[this->color[0]][1];
     byte b = colorLib[this->color[0]][2];
@@ -14,6 +15,12 @@ void Clock::refresh() {
     b = colorLib[this->color[1]][2];
     draw::digit(rtc.getHour(h12, PM) / 10, 0, 5, r, g, b);  // Durch 10 teilen -> linke Stelle
     draw::digit(rtc.getHour(h12, PM) % 10, 4, 5, r, g, b);  //Mit Modulo rechte Stelle bestimmen
+
+    r = colorLib[rtc.getSecond() / 5 + 2][0];
+    g = colorLib[rtc.getSecond() / 5 + 2][1];
+    b = colorLib[rtc.getSecond() / 5 + 2][2];
+    draw::xy(LEDS_X - 1, rtc.getSecond() % 10, r, g, b);
+
     FastLED.show();
 }
 
