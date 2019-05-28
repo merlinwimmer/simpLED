@@ -18,8 +18,6 @@ void setup() {
     attachInterrupt(digitalPinToInterrupt(BTN_A_PIN), btn_a_ISR, RISING);
     //attachInterrupt(digitalPinToInterrupt(BTN_B_PIN), btn_b_ISR, RISING);  //Isn't build in yet
 
-    Serial.println("Setup done...");
-
     parser("a/a/0/200/50/10");
     apps[0]->setName("Vollbild Farbe");
     parser("a/a/1/1/60/3/3/4/6");
