@@ -12,7 +12,7 @@ void setup() {
 
     printTime();
 
-    //FastLED.setDither(0); //Falls setBrigtness buggt
+    FastLED.setDither(0); //Falls setBrigtness buggt
 
     pinMode(BTN_A_PIN, INPUT_PULLUP);
     attachInterrupt(digitalPinToInterrupt(BTN_A_PIN), btn_a_ISR, RISING);
